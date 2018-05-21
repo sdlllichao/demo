@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>reading List</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
     <h2>Your reading list</h2>
@@ -16,8 +16,13 @@
             </dt>
             <dd class="bookDescription">
                 <span th:if="${book.description}" th:text="${book.description}">description</span>
+                <span th:if="${book.description eq null}">No description</span>
             </dd>
         </dl>
+    </div>
+
+    <div th:if="${#lists.isEmpty(books)}">
+        <p>You hava no books in your booklist</p>
     </div>
 
     <hr/>
@@ -26,9 +31,13 @@
 
     <form method="post">
         <label for="title">Title:</label>
-        <input type="text" name="title" size="50" /><br/>
+        <input type="text" id="title" name="title" size="50" /><br/>
         <label for="author">Author:</label>
-        <input type="text" name="author" size="50" /><br/>
+        <input type="text" id="author" name="author" size="50" /><br/>
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn" size="15" /><br/>
+        <label for="description">Description:</label><br/>
+        <textarea id="description" name="description" cols="80" rows="5"></textarea><br/>
         <input type="submit"/>
     </form>
 </body>
