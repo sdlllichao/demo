@@ -1,0 +1,10 @@
+spring:
+  freemarker:
+    cache: false
+
+server:
+  port: 8000
+
+logging:
+  level:
+    root: DEBUG
